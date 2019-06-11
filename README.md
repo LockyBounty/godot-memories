@@ -7,10 +7,10 @@ This is a kind of contribution of mine for Godot.
 
 ## Tools: 
 
-Godot
-Gimp
+- Godot
+- Gimp
 
-## Environnement:
+## Environment:
 
 Ubuntu Mate
 
