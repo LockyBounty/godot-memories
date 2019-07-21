@@ -1,0 +1,69 @@
+Godot 3.1
+For Linux users:
+
+1. Download the Android SDK :
+
+- https://developer.android.com/studio/releases/platform-tools
+- Take the last version of command line tools "Download SDK Platform-Tools"
+- Decompress the package
+
+2. Download JDK
+
+- https://www.oracle.com/technetwork/java/javase/downloads/index.html
+- Take the last version of Oracle JDK
+- Decompress the package
+
+3. Generate your debug key :
+
+code:
+keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999
+
+- Save the file somewhere
+
+4. On Godot:
+
+- Open your project
+
+Open "Editor" tump:
+
+- Go down and select Export> Android
+- Put the path to your "Adb" which is in the uncompressed SDK-tools folder
+(/home/loki/SDKplatform-tools/adb)
+- Put the path for your "jarsigner" which is in the uncompressed JDK folder
+(/home/loki/jdk-12.0.1_linux-x64_bin/usr/lib/jvm/jdk-12.0.1/bin/jarsigner)
+- put the path to your keystore that you created 
+(/home/loki/Desktop/keystore for laby game/debug.keystore)
+
+
+5. Generate your keystore for the .apk (set your info)
+
+code:
+keytool -v -genkey -v -keystore mygame.keystore -alias mygame -keyalg RSA -validity 10000
+
+- Note that you have to change in the code above "mygame" to the name of your app
+- Note2 you can put space for: -alias "my game wow"
+- Fill what it is asked to you on the screen
+- Save the file somewhere
+ 
+6. On Godot:
+
+Open "Project" tumb:
+- Go to "Export"
+- Click "add..."
+- Select Android
+- In the options>package:
+- To Fill >
+Unique Name: something unique (ex: com.caramelgames.android)
+Name: name of your game
+
+- In the options>keystore:
+- To Fill >
+Release: Enter the path to the keystore file you just generated.
+Release User: Replace with the key alias.
+Release Password: Key password. Note that the keystore password and the key password currently have to be the same.
+
+7. Click on "Export Project"
+
+- Now you should have your .apk file
+- You can put it on Google Play or Alternative...
+
